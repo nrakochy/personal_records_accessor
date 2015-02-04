@@ -1,16 +1,38 @@
 require 'data_record_sorter'
 
 describe DataRecordSorter do
-  let(:record1){ {last_name: "LastName", first_name: "FirstName", gender: "female", favorite_color: "black", date_of_birth: "3/1/2000"} }
+  let(:record1){ {last_name: "LastName", first_name: "FirstName", gender: "female", favorite_color: "black", date_of_birth: "3/1/1980"} }
   let(:record2){ {last_name: "sampleLast", first_name: "sampleFirst", gender: "male", favorite_color: "clear", date_of_birth: "2/29/2000"} }
-  let(:sample_record){ [ record1, record2 ] }
+  let(:record3){ {last_name: "Last", first_name: "First", gender: "female", favorite_color: "black", date_of_birth: "4/1/1990"} }
+  let(:sample_record){ [ record1, record2, record3 ] }
   let(:sorter){ DataRecordSorter.new(sample_record) }
 
   describe "#filter_record" do
-    it 'filters records by desired field' do
+    it 'filters records by gender' do
       filter_field = "gender"
       filter_query = "female"
-      expect(sorter.filter_record(filter_field, filter_query)).to eq([record1])
+      expect(sorter.filter_records(filter_field, filter_query)).to contain_exactly(record1, record3)
+    end
+
+    it 'filters records by favorite_color' do
+      filter_field = "favorite_color"
+      filter_query = "black"
+      expect(sorter.filter_records(filter_field, filter_query)).to contain_exactly(record1, record3)
+    end
+
+  end
+
+  describe "#sort_records_descending" do
+    it 'returns an array sorted in descending order according to record gender' do 
+      filter_field = "gender"
+      expect(sorter.sort_records_descending(filter_field, sample_record)).to eq([record2, record1, record3])
+    end
+
+    it 'returns an array sorted in descending order according to record last_name' do
+      filter_field = "last_name"
+      expect(sorter.sort_records_descending(filter_field, sample_record)).to eq([record2, record1, record3])
     end
   end
+
+
 end
