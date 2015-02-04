@@ -1,10 +1,4 @@
-<<<<<<< HEAD:lib/file_parser.rb
 class FileParser
-  attr_reader :files_to_parse, :formatted_records
-=======
-class FileFormatter
-  attr_reader :files_to_parse, :formatted_file
->>>>>>> 13090c580d928426284ff01690830445702deb0e:lib/file_formatter.rb
 
   def initialize(files_to_parse)
     @files_to_parse = files_to_parse

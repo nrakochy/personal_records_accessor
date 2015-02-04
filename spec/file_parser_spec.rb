@@ -1,7 +1,7 @@
-require 'file_formatter'
+require 'file_parser'
 
-describe FileFormatter do
-  let(:parser){ FileFormatter.new(["example_file"]) }
+describe FileParser do
+  let(:parser){ FileParser.new(["example_file"]) }
   let(:sample_line_pipes){ "LastName | FirstName | Gender | FavoriteColor | DateOfBirth" }
   let(:sample_line_commas){ "LastName, FirstName, Gender, FavoriteColor, DateOfBirth" }
   let(:sample_line_spaces){ "LastName FirstName Gender FavoriteColor DateOfBirth" }
