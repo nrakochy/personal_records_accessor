@@ -2,5 +2,9 @@
 
 $:.unshift(File.expand_path(File.dirname(__FILE__) + "/../lib/"))
 
+require 'main'
+
+Main.new(ARGV).access_records
+
 
 

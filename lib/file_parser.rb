@@ -31,8 +31,8 @@ class FileParser
 
   def reformat_line(line)
     chomped_line = line.chomp
-    trimmed_line = trim_line(chomped_line)
-    remove_superfluous_spaces(trimmed_line)
+    trimmed_line = trim_record_line(chomped_line)
+    split_line_by_category(trimmed_line)
   end
 
   def trim_record_line(line)
