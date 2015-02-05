@@ -17,14 +17,27 @@ class DataRecordSorter
   end
 
   def sort_records_ascending_order_by_DOB(records)
-    modified_records.sort_by{ |record| record[:date_of_birth] }
+    modified_records = reverse_date_year_first_on_data_records(records) 
+    sorted_records = modified_records.sort_by{ |record| record[:date_of_birth] }
+    restore_date_format_on_data_records(sorted_records)
   end
 
-  def reverse_date_on_data_records(records)
-    records.each{|record| record[:date_of_birth] = reverse_split_date(record[:date_of_birth]) }
+  def reverse_date_year_first_on_data_records(records)
+    records.each{|record| record[:date_of_birth] = reformat_date_year_first(record[:date_of_birth]) }
   end
 
-  def reverse_split_date(date)
-    date.split('/').reverse.join('/')
+  def restore_date_format_on_data_records(records)
+    records.each{|record| record[:date_of_birth] = restore_date_format(record[:date_of_birth]) }
+  end
+
+  def reformat_date_year_first(date)
+    reversed_date = date.split('/').reverse
+    reversed_date[0] + "/" + reversed_date[2] + "/" + reversed_date[1]
+  end
+
+  def restore_date_format(reversed_date)
+    date_arr = reversed_date.split('/')
+    sorted_arr = date_arr << date_arr.shift
+    sorted_arr.join('/')
   end
 end
