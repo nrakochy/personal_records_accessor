@@ -45,7 +45,7 @@ describe DataRecordSorter do
       expect(sorter.sort_records_ascending(filter_field, sample_record).last).to eq(record2)
     end
 
-    xit 'returns an array sorted in ascending order according to record date_of_birth' do
+    it 'returns an array sorted in ascending order according to record date_of_birth' do
       filter_field = :date_of_birth
       expect(sorter.sort_records_ascending(filter_field, sample_record)).to eq([record1, record3, record2])
     end
@@ -90,6 +90,7 @@ describe DataRecordSorter do
     it 'returns the correct format MM/DD/YYYY as a string from a reversed date string YYYY/DD/MM ' do
       expect(sorter.restore_date_format(record1_reversed_date)).to eq(record1[:date_of_birth])
       expect(sorter.restore_date_format(record2_reversed_date)).to eq(record2[:date_of_birth])
+      expect(sorter.restore_date_format(record3_reversed_date)).to eq(record3[:date_of_birth])
     end
   end
 

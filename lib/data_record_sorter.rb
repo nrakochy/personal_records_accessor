@@ -13,11 +13,15 @@ class DataRecordSorter
   end
 
   def sort_records_ascending(filter_field, records)
-    records.sort_by { |record| record[filter_field] }
+    if filter_field == :date_of_birth
+      sort_records_ascending_order_by_DOB(records)
+    else
+      records.sort_by { |record| record[filter_field] }
+    end
   end
 
   def sort_records_ascending_order_by_DOB(records)
-    modified_records = reverse_date_year_first_on_data_records(records) 
+    modified_records = reverse_date_year_first_on_data_records(records)
     sorted_records = modified_records.sort_by{ |record| record[:date_of_birth] }
     restore_date_format_on_data_records(sorted_records)
   end
