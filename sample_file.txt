@@ -1,1 +1,4 @@
-rock | niko | male | clear | 2/29/2000
+brock, niko, male, clear, 02/29/2000
+prock | piko | female | black | 02/28/2000
+trock stiko male red 02/29/1999
+arock | aniko | female | blood | 02/27/1997

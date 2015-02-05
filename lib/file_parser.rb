@@ -1,4 +1,5 @@
 class FileParser
+  attr_reader :files_to_parse, :formatted_records
 
   def initialize(files_to_parse)
     @files_to_parse = files_to_parse
