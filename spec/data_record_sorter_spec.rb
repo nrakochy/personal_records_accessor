@@ -8,21 +8,20 @@ describe DataRecordSorter do
   let(:record3){ {last_name: "Last", first_name: "First", gender: "female", favorite_color: "black", date_of_birth: "04/10/1990"} }
   let(:record3_reversed_date){ "1990/04/10" }
   let(:sample_record){ [ record1, record2, record3 ] }
-  let(:sorter){ DataRecordSorter.new(sample_record) }
+  let(:sorter){ DataRecordSorter.new }
 
   describe "#filter_record" do
     it 'filters records by gender' do
       filter_field = :gender
       filter_query = "female"
-      expect(sorter.filter_records(filter_field, filter_query)).to contain_exactly(record1, record3)
+      expect(sorter.filter_records(filter_field, filter_query, sample_record)).to contain_exactly(record1, record3)
     end
 
     it 'filters records by favorite_color' do
       filter_field = :favorite_color
       filter_query = "black"
-      expect(sorter.filter_records(filter_field, filter_query)).to contain_exactly(record1, record3)
+      expect(sorter.filter_records(filter_field, filter_query, sample_record)).to contain_exactly(record1, record3)
     end
-
   end
 
   describe "#sort_records_descending" do

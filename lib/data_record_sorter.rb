@@ -1,11 +1,8 @@
 class DataRecordSorter
+  attr_reader :data_records
 
-  def initialize(data_records)
-    @data_records = data_records
-  end
-
-  def filter_records(filter_field, filter_query)
-    @data_records.select{|record| record[filter_field] == filter_query }
+  def filter_records(filter_field, filter_query, data_records)
+    data_records.select{|record| record[filter_field] == filter_query }
   end
 
   def sort_records_descending(filter_field, records)

@@ -6,7 +6,7 @@ class ConsolePresenter
     @io = io
   end
 
-  def display_results(results)
+  def display_all_sets_of_records(results)
     results.each{|records| display_records(records) }
   end
 
