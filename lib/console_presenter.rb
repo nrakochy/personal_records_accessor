@@ -7,7 +7,12 @@ class ConsolePresenter
   end
 
   def display_all_sets_of_records(results)
-    results.each{|records| display_records(records) }
+    output_number = 1
+    results.each do |records|
+      @io.print_output(output_number)
+      display_records(records)
+      output_number += 1
+    end
   end
 
   def display_records(records)
