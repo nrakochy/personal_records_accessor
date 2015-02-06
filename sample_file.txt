@@ -1,4 +1,4 @@
-brock, niko, male, clear, 02/29/2000
-prock | piko | female | black | 02/28/2000
-trock stiko male red 02/29/1999
-arock | aniko | female | blood | 02/27/1997
+blast, niko, male, clear, 02/29/2000
+plast | piko | female | black | 02/28/2000
+tlast stiko male red 02/29/1999
+alast | aniko | female | blood | 02/27/1997

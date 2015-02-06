@@ -1,0 +1,4 @@
+annote, niko, male, clear, 02/28/2001
+denote | piko | female | black | 02/27/2001
+connote stiko male red 02/28/1995
+note | aniko | female | blood | 02/26/1994
