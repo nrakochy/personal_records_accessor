@@ -1,6 +1,6 @@
 class ConsoleIO
 
-  def initialize(input = $stdin, output = $stdout)
+  def initialize(output = $stdout)
     @output = output
   end
 
