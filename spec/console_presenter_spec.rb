@@ -1,7 +1,9 @@
 require 'console_presenter'
+require 'mock_io'
 
 describe ConsolePresenter do
-  let(:presenter){ ConsolePresenter.new }
+  let(:mock_io){ MockIO.new }
+  let(:presenter){ ConsolePresenter.new(mock_io) }
   let(:record1){ {last_name: "LastName", first_name: "FirstName", gender: "female", favorite_color: "black", date_of_birth: "03/01/1980"} }
   let(:record1_string){ "LastName FirstName female black 03/01/1980\n" }
   let(:record2){ {last_name: "sampleLast", first_name: "sampleFirst", gender: "male", favorite_color: "clear", date_of_birth: "01/10/2000"} }
@@ -24,4 +26,11 @@ describe ConsolePresenter do
       expect(presenter.format_records(sample_records_hash_arr)).to eq(sample_records_string_arr)
     end
   end
+
+  describe "#display_records" do
+    it "calls the IO class on the formatted records" do
+      expect(presenter.display_records(sample_records_hash_arr)).to eq([sample_records_string_arr])
+    end
+  end
+
 end
