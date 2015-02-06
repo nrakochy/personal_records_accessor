@@ -1,6 +1,6 @@
 require 'data_record_sorter'
 
-class QueryRequests
+class QueryRequirements
   attr_reader :sorted_results, :sorter
 
   def initialize(record_sorter, data_records)
@@ -9,7 +9,7 @@ class QueryRequests
     @sorted_results = []
   end
 
-  def sort_by_query_requests
+  def sort_by_query_requirements
     @sorted_results << sort_by_gender_then_last_name_ascending
     @sorted_results << sort_by_birthdate_ascending
     @sorted_results << sort_by_last_name_descending
