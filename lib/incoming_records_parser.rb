@@ -1,8 +1,8 @@
-class FileParser
+class IncomingRecordsParser
   attr_reader :files_to_parse, :formatted_records
 
-  def initialize(files_to_parse)
-    @files_to_parse = files_to_parse
+  def initialize(params = nil)
+    @files_to_parse = params[:files_to_parse]
     @formatted_records = []
   end
 
@@ -13,12 +13,16 @@ class FileParser
 
   def reformat_data_file(data_file)
     File.open(data_file, "r") do |file|
-      file.readlines.map do |line|
-        formatted_line = reformat_line(line)
-        @formatted_records << convert_line_to_hash(formatted_line)
-      end
+      file.readlines.map{
+        |line| @formatted_records << reformat_line_and_convert_to_hash_record(line) }
     end
   end
+
+  def reformat_line_and_convert_to_hash_record(line)
+    reformatted_line = reformat_line(line)
+    convert_line_to_hash(reformatted_line)
+  end
+
 
   def convert_line_to_hash(params)
      {

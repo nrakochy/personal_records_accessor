@@ -1,11 +1,11 @@
 require 'data_record_sorter'
 
 class QueryRequirements
-  attr_reader :sorted_results, :sorter
+  attr_reader :sorted_results, :sorter, :data_records
 
-  def initialize(record_sorter, data_records)
-    @sorter = record_sorter
-    @data_records = data_records
+  def initialize(params)
+    @sorter = params[:record_sorter]
+    @data_records = params[:data_records]
     @sorted_results = []
   end
 
