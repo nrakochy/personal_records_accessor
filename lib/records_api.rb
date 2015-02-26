@@ -1,10 +1,12 @@
 require 'grape'
+require 'incoming_records_parser'
 
-class API < Grape::API
+class RecordsAPI < Grape::API
+
   resource :records do
 
     desc "post a new record"
-    post do
+    post '/records' do
     end
 
     desc "get sorted records"
@@ -14,8 +16,8 @@ class API < Grape::API
       optional :last_name, type: Date, desc: "Records sorted by last_name"
     end
 
-    route_param :sort_option do
-      get '' do
+    route_param :gender do
+      get :gender do
       end
     end
   end

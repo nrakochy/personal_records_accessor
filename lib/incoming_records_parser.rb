@@ -14,11 +14,11 @@ class IncomingRecordsParser
   def reformat_data_file(data_file)
     File.open(data_file, "r") do |file|
       file.readlines.map{
-        |line| @formatted_records << reformat_line_and_convert_to_hash_record(line) }
+        |line| @formatted_records << reformat_line_and_convert_to_record(line) }
     end
   end
 
-  def reformat_line_and_convert_to_hash_record(line)
+  def reformat_line_and_convert_to_record(line)
     reformatted_line = reformat_line(line)
     convert_line_to_hash(reformatted_line)
   end
