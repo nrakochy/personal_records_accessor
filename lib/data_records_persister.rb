@@ -5,8 +5,8 @@ class DataRecordsPersister
   def overwrite_data_records_file(data_records)
     File.open('data_records.yml', 'w+') do |f|
       data_records.map do |record|
-        record.to_yaml
-        f.write(record)
+        formatted_record = record.to_yaml
+        f.write(formatted_record)
       end
     end
   end
