@@ -10,25 +10,26 @@ class CommandLineRunner
     @record_sorter = DataRecordSorter.new
     @query_requirements = QueryRequirements.new({ record_sorter: @record_sorter })
     @console_presenter = ConsolePresenter.new
+    parse_sort_and_display_records_to_console(data_files)
   end
+
+  def parse_sort_and_display_records_to_console(data_files)
+    data_records = parse_files(data_files)
+    sorted_records = sort_records(data_records)
+    display_to_console(sorted_records)
+  end
+
 
   def display_to_console(sorted_results)
     @console_presenter.display_all_sets_of_records(sorted_results)
   end
 
-  def parse_and_sort_records
-    data_records = parse_files(data_files)
-    sort_records(data_records)
-  end
-
   def parse_files(data_files)
-    data_files = {files_to_parse: data_files}
     @file_parser.parse_files(data_files)
   end
 
   def sort_records(data_records)
-    required_query_objects = { data_records: data_records }
-    @query_requirements.sort_by_query_requirements(required_query_objects)
+    @query_requirements.sort_by_query_requirements(data_records)
   end
 
 end
