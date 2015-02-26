@@ -8,7 +8,7 @@ class CommandLineRunner
   def initialize(data_files)
     @file_parser = IncomingRecordsParser.new
     @record_sorter = DataRecordSorter.new
-    @query_requirements = QueryRequirements.new
+    @query_requirements = QueryRequirements.new({ record_sorter: @record_sorter })
     @console_presenter = ConsolePresenter.new
   end
 
@@ -27,7 +27,7 @@ class CommandLineRunner
   end
 
   def sort_records(data_records)
-    required_query_objects = {data_records: data_records, record_sorter: @record_sorter }
+    required_query_objects = { data_records: data_records }
     @query_requirements.sort_by_query_requirements(required_query_objects)
   end
 

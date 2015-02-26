@@ -9,7 +9,8 @@ class QueryRequirements
     @sorted_results = []
   end
 
-  def sort_by_query_requirements
+  def sort_by_query_requirements(data_records = nil)
+    @data_records ||= data_records
     @sorted_results << sort_by_gender_then_last_name_ascending
     @sorted_results << sort_by_birthdate_ascending
     @sorted_results << sort_by_last_name_descending

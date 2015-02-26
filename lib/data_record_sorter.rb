@@ -1,5 +1,4 @@
 class DataRecordSorter
-  attr_reader :data_records
 
   def filter_records(filter_field, filter_query, data_records)
     data_records.select{|record| record[filter_field] == filter_query }
