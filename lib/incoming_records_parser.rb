@@ -1,13 +1,12 @@
 class IncomingRecordsParser
-  attr_reader :files_to_parse, :formatted_records
+  attr_reader :formatted_records
 
-  def initialize(params = nil)
-    @files_to_parse = params[:files_to_parse]
+  def initialize
     @formatted_records = []
   end
 
-  def parse_files
-    @files_to_parse.each { |file| reformat_data_file(file) }
+  def parse_files(unparsed_files)
+    unparsed_files.each { |file| reformat_data_file(file) }
     @formatted_records
   end
 

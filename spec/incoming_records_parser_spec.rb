@@ -1,7 +1,8 @@
 require 'incoming_records_parser'
 
 describe IncomingRecordsParser do
-  let(:parser){ IncomingRecordsParser.new({files_to_parse: ["example_file"] }) }
+  let(:parser){ IncomingRecordsParser.new }
+  let(:unparsed_files){ {files_to_parse: ["example_file"] } }
   let(:sample_line_pipes){ "LastName | FirstName | Gender | FavoriteColor | DateOfBirth" }
   let(:sample_line_commas){ "LastName, FirstName, Gender, FavoriteColor, DateOfBirth" }
   let(:sample_line_spaces){ "LastName FirstName Gender FavoriteColor DateOfBirth" }

@@ -1,5 +1,4 @@
 require 'grape'
-require 'incoming_records_parser'
 
 class RecordsAPI < Grape::API
 
