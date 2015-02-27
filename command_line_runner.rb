@@ -9,7 +9,8 @@ class CommandLineRunner
   def initialize(data_files)
     @file_parser = IncomingRecordsParser.new
     @record_sorter = DataRecordSorter.new
-    @repo = YAMLRepository::UserRepository.new
+    database_path = { db_path: 'database.yml' }
+    @repo = YAMLRepository::User.new(database_path)
     @query_requirements = QueryRequirements.new({ record_sorter: @record_sorter })
     @console_presenter = ConsolePresenter.new
     process_records_and_display_to_console(data_files)

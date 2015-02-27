@@ -2,9 +2,9 @@ require 'yaml'
 require 'json'
 
 module YAMLRepository
-  class UserRepository
-    def initialize
-      @yaml_file_path = 'data_records.yml'
+  class User
+    def initialize(params)
+      @yaml_file_path = params[:db_path]
     end
 
     def convert_json(record)
@@ -16,8 +16,8 @@ module YAMLRepository
       data_record.to_yaml
     end
 
-    def load_records(records_file_path)
-      YAML.load_file(records_file_path)
+    def find_all_records
+      YAML.load_file(@yaml_file_path)
     end
 
     def model_class
