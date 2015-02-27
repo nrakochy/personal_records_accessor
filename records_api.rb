@@ -14,9 +14,13 @@ class RecordsAPI < Grape::API
       end
 
     desc "get sorted records"
+      get do
+        RepositoryInterface.for(:user).find_all_records
+      end
+
       get :gender do
         @record_sorter = DataRecordSorter.new
-        @data_records = Repository.for(:user).find_all_records
+        @data_records = RepositoryInterface.for(:user).find_all_records
         query_req_params = {record_sorter: @record_sorter, data_records: @data_records }
         @query_reqs = QueryRequirements.new(query_req_params)
         sorted_records = @query_reqs.sort_by_gender_then_last_name_ascending
