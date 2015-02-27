@@ -1,2 +1,2 @@
-require File.join(File.dirname(__FILE__), "records_api")
+require_relative "lib/records_api"
 run RecordsAPI
