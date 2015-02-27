@@ -14,9 +14,11 @@ describe JSONRepository::User do
     @test_file = create_test_file
   end
 
-  describe "#convert_record_to_yaml" do
-    it 'correctly converts a Hash to JSON' do
-      expect(repo.convert_record_format(record1)).to eq(record1.to_json)
+  describe "#" do
+    it 'adds a comma to a JSON record' do
+      record_json = (record1.to_json)
+      json_with_comma = record_json + ', '
+      expect(repo.add_comma_to_record(record_json)).to eq(json_with_comma)
     end
   end
 
@@ -49,7 +51,7 @@ def create_test_file
   test_data = [record1, record2]
   File.open(db_path, 'w') do |file|
     test_data.each do |record|
-      formatted_data = record.to_json
+      formatted_data = record.to_json + ','
       file.write(formatted_data)
     end
   end

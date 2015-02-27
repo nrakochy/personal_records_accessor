@@ -16,6 +16,14 @@ class CommandLineRunner
     process_records_and_display_to_console(data_files)
   end
 
+  def display_to_console(sorted_results)
+    @console_presenter.display_all_sets_of_records(sorted_results)
+  end
+
+  def parse_files(data_files)
+    @file_parser.parse_files(data_files)
+  end
+
   def process_records_and_display_to_console(data_files)
     data_records = parse_files(data_files)
     save_records(data_records)
@@ -27,14 +35,6 @@ class CommandLineRunner
     query_field = :last_name
     sorted_records = @record_sorter.sort_records_ascending(query_field, data_records)
     @repo.overwrite_data_records_file(sorted_records)
-  end
-
-  def display_to_console(sorted_results)
-    @console_presenter.display_all_sets_of_records(sorted_results)
-  end
-
-  def parse_files(data_files)
-    @file_parser.parse_files(data_files)
   end
 
   def sort_records(data_records)
