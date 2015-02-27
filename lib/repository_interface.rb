@@ -1,4 +1,4 @@
-require_relative "yaml_repository"
+require_relative "json_repository"
 
 class RepositoryInterface
 

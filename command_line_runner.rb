@@ -1,5 +1,5 @@
 require_relative 'lib/incoming_records_parser'
-require_relative 'lib/yaml_repository'
+require_relative 'lib/json_repository'
 require_relative 'lib/data_record_sorter'
 require_relative 'lib/console_presenter'
 require_relative 'reverb_reqs/query_requirements'
@@ -9,8 +9,8 @@ class CommandLineRunner
   def initialize(data_files)
     @file_parser = IncomingRecordsParser.new
     @record_sorter = DataRecordSorter.new
-    database_path = { db_path: 'database.yml' }
-    @repo = YAMLRepository::User.new(database_path)
+    database_path = { db_path: 'database.json' }
+    @repo = JSONRepository::User.new(database_path)
     @query_requirements = QueryRequirements.new({ record_sorter: @record_sorter })
     @console_presenter = ConsolePresenter.new
     process_records_and_display_to_console(data_files)

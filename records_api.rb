@@ -1,7 +1,7 @@
 require 'grape'
 require 'json'
 require_relative 'lib/data_record_sorter'
-require_relative 'lib/yaml_repository'
+require_relative 'lib/repository_interface'
 require_relative 'reverb_reqs/query_requirements'
 
 class RecordsAPI < Grape::API
@@ -16,8 +16,7 @@ class RecordsAPI < Grape::API
     desc "get sorted records"
       get :gender do
         @record_sorter = DataRecordSorter.new
-        #@data_records = Repository.for(:user).find_all_records
-        @data_records = YAMLRepository::UserRepository.new.find_all_records
+        @data_records = Repository.for(:user).find_all_records
         query_req_params = {record_sorter: @record_sorter, data_records: @data_records }
         @query_reqs = QueryRequirements.new(query_req_params)
         sorted_records = @query_reqs.sort_by_gender_then_last_name_ascending

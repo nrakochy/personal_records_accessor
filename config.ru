@@ -1,7 +1,7 @@
-require_relative "records_api"
 require_relative "lib/repository_interface"
+require_relative "records_api"
 
-
-RepositoryInterface.register(:user, YAMLRepository::User.new)
+db_path = 'database.json'
+RepositoryInterface.register(:user, JSONRepository::User.new({db_path: db_path}))
 
 run RecordsAPI
