@@ -1,4 +1,4 @@
-require 'console_io'
+require_relative 'console_io'
 
 class ConsolePresenter
 

@@ -1,4 +1,4 @@
-require 'data_record_sorter'
+require_relative '../lib/data_record_sorter'
 
 class QueryRequirements
   attr_reader :sorted_results, :sorter, :data_records
