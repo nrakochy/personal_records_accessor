@@ -3,7 +3,7 @@ require 'json'
 
 module YAMLRepository
   class UserRepository
-    def initialize(params = nil)
+    def initialize
       @yaml_file_path = 'data_records.yml'
     end
 

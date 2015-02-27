@@ -18,6 +18,8 @@ class RecordsAPI < Grape::API
 
       route_param :gender do
         get :gender do
+          records = Repository.for(:user).find_all_records
+          
 
         end
     end
