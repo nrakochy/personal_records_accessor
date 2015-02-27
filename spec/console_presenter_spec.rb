@@ -1,5 +1,5 @@
 require 'console_presenter'
-require 'mock_io'
+require 'support/mock_io'
 
 describe ConsolePresenter do
   let(:mock_io){ MockIO.new }
@@ -29,7 +29,7 @@ describe ConsolePresenter do
 
   describe "#display_records" do
     it "calls the IO class on the formatted records" do
-      expect(presenter.display_records(sample_records_hash_arr)).to eq([sample_records_string_arr])
+      expect(presenter.display_records(sample_records_hash_arr).empty?).to eq(false)
     end
   end
 
