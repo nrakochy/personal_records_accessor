@@ -1,5 +1,6 @@
 require_relative "lib/records_api"
+require_relative "lib/repository_interface"
 
-Repository.register(:user, YAMLRepository::UserRepository.new)
+RepositoryInterface.register(:user, YAMLRepository::UserRepository.new)
 
 run RecordsAPI

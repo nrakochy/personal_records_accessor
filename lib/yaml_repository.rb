@@ -20,6 +20,10 @@ module YAMLRepository
       YAML.load_file(records_file_path)
     end
 
+    def model_class
+      YAMLRepository::User
+    end
+
     def overwrite_data_records_file(data_records)
       File.open(@yaml_file_path, 'w+') do |f|
         data_records.map do |record|
