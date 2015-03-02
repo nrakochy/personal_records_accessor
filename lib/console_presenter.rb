@@ -23,7 +23,7 @@ class ConsolePresenter
   end
 
   def format_individual_record(record)
-    record.read_record_attributes.values.join(" ") + "\n"
+    record.read_record_attributes_without_reformatted_date_included.values.join(" ") + "\n"
   end
 
 end

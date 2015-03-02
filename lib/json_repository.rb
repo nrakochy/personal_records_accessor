@@ -10,21 +10,8 @@ module JSONRepository
       data_record + ', '
     end
 
-    def add_id_number_to_records(records)
-      id_num = 1;
-      records.map! do |record|
-        record[:id] = id_num
-        id_num += 1
-      end
-      records
-    end
-
     def find_all_records
       File.read(@db_file_path)
-    end
-
-    def model_class
-      JSONRepository::User
     end
 
     def overwrite_data_records_file(data_records)

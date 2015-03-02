@@ -1,3 +1,5 @@
+require 'json'
+
 class PersonalRecord
   attr_reader :last_name, :first_name, :gender, :favorite_color, :date_of_birth, :date_year_month_day
 
@@ -24,6 +26,22 @@ class PersonalRecord
       date_of_birth: @date_of_birth,
       date_year_month_day: @date_year_month_day
     }
+  end
+
+  def read_record_attributes_without_reformatted_date_included
+    {
+      last_name: @last_name,
+      first_name: @first_name,
+      gender: @gender,
+      favorite_color: @favorite_color,
+      date_of_birth: @date_of_birth,
+    }
+  end
+
+
+
+  def convert_to_json
+    read_record_attributes.to_json
   end
 
 end
