@@ -1,15 +1,13 @@
-require_relative 'console_io'
-
 class ConsolePresenter
 
-  def initialize(io = ConsoleIO.new)
+  def initialize(io = $stdout)
     @io = io
   end
 
   def display_all_sets_of_records(results)
     output_number = 1
     results.each do |records|
-      @io.print_output(output_number)
+      @io.puts(output_number)
       display_records(records)
       output_number += 1
     end
@@ -17,7 +15,7 @@ class ConsolePresenter
 
   def display_records(records)
     formatted_records = format_records(records)
-    @io.print_output(formatted_records)
+    @io.puts(formatted_records)
   end
 
   def format_records(records)

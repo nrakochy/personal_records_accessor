@@ -5,7 +5,7 @@ class MockIO
     @output = []
   end
 
-  def print_output(sample_output)
+  def puts(sample_output)
     @output << sample_output
   end
 end
