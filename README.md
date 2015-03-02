@@ -1,7 +1,7 @@
 ## Command Line
-To process text files from the command line, enter the executable method + text files. For example:
+To process text files from the command line, enter the executable method in the bin + text files. For example:
 ```
-[bin/start_console_personal_records_accessor filename1 filename2]
+bin/start_console_personal_records_accessor filename1 filename2
 ```
 There are two sample text files that can be used in the support directory if needed. This will read
 the file and display the records to the console like so:
@@ -18,7 +18,7 @@ refactoring, but it should work on a remote service like Heroku.
 Otherwise, `rackup` will work, but this will not use the concurrency awesome sauce of Puma.
 
 ## Api
-This app uses the Grape Api(http://intridea.github.io/grape/), which is a “an opinionated micro-framework
+This app uses the [Grape Api](http://intridea.github.io/grape/), which is a “an opinionated micro-framework
 for creating REST-like APIs in Ruby.”
 
 For this project, you can use the following HTTP requests:
