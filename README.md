@@ -1,11 +1,15 @@
 ## Command Line
 To process text files from the command line, enter the executable method + text files. For example:
+```
 [bin/start_console_personal_records_accessor filename1 filename2]
+```
 There are two sample text files that can be used in the support directory if needed. This will read
 the file and display the records to the console like so:
-[Output 1 – sorted by gender (females before males) then by last name ascending.
+```
+Output 1 – sorted by gender (females before males) then by last name ascending.
 Output 2 – sorted by birth date, ascending.
-Output 3 – sorted by last name, descending.]
+Output 3 – sorted by last name, descending.
+```
 
 ## Rackup
 This app uses Puma as for a server and is configured in the Procfile. I use `foreman start` for local
@@ -18,10 +22,13 @@ This app uses the Grape Api(http://intridea.github.io/grape/), which is a “an 
 for creating REST-like APIs in Ruby.”
 
 For this project, you can use the following HTTP requests:
-[POST /records - Post a single data line in any of the 3 formats supported by your existing code
+
+```
+POST /records - Post a single data line in any of the 3 supported formats
 GET /records/gender - returns records sorted by gender
 GET /records/birthdate - returns records sorted by birthdate
-GET /records/name - returns records sorted by name]
+GET /records/name - returns records sorted by name
+```
 
 ## Tests
 Using Rspec to TDD. Rspec spec/ should give you green all the way.
