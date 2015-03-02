@@ -6,10 +6,9 @@ require 'query_requirements'
 
 class CommandLineRunner
 
-  def initialize(data_files)
+  def initialize(data_files, database_path)
     @file_parser = IncomingRecordsParser.new
     @record_sorter = DataRecordSorter.new
-    database_path = { db_path: 'database.json' }
     @repo = JSONRepository::User.new(database_path)
     @query_requirements = QueryRequirements.new({ record_sorter: @record_sorter })
     @console_presenter = ConsolePresenter.new
