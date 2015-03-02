@@ -31,7 +31,7 @@ GET /records/name - returns records sorted by name
 ```
 
 ## Tests
-Using Rspec to TDD. Rspec spec/ should give you green all the way.
+Using Rspec to TDD. `Rspec spec/` or `rake` should give you green all the way. 
 
 ## To-Do
 
