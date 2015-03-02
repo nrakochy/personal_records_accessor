@@ -1,8 +1,8 @@
-require_relative 'lib/incoming_records_parser'
-require_relative 'lib/json_repository'
-require_relative 'lib/data_record_sorter'
-require_relative 'lib/console_presenter'
-require_relative 'reverb_reqs/query_requirements'
+require 'incoming_records_parser'
+require 'json_repository'
+require 'data_record_sorter'
+require 'console_presenter'
+require 'query_requirements'
 
 class CommandLineRunner
 

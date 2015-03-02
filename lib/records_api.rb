@@ -1,8 +1,8 @@
 require 'grape'
 require 'json'
-require_relative 'lib/data_record_sorter'
-require_relative 'lib/repository_interface'
-require_relative 'reverb_reqs/query_requirements'
+require_relative 'data_record_sorter'
+require_relative 'repository_interface'
+require_relative 'query_requirements'
 
 class RecordsAPI < Grape::API
 

@@ -1,5 +1,5 @@
 require 'console_presenter'
-require 'support/mock_io'
+require_relative '../support/mock_io'
 
 describe ConsolePresenter do
   let(:mock_io){ MockIO.new }
