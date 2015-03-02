@@ -1,4 +1,4 @@
-require_relative '../lib/data_record_sorter'
+require 'data_record_sorter'
 
 class QueryRequirements
   attr_reader :sorted_results, :sorter, :data_records
@@ -9,8 +9,8 @@ class QueryRequirements
     @sorted_results = []
   end
 
-  def sort_by_query_requirements(data_records = nil)
-    @data_records ||= data_records
+  def sort_by_query_requirements(personal_records = nil)
+    @data_records ||= personal_records
     @sorted_results << sort_by_gender_then_last_name_ascending
     @sorted_results << sort_by_birthdate_ascending
     @sorted_results << sort_by_last_name_descending
