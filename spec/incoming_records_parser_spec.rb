@@ -25,6 +25,15 @@ describe IncomingRecordsParser do
     end
   end
 
+  describe "#reformat_line" do
+    it 'formats an incoming records of supported txt formats and returns a split array format' do
+      expect(parser.reformat_line(sample_line_pipes)).to eq(formatted_line)
+      expect(parser.reformat_line(sample_line_commas)).to eq(formatted_line)
+      expect(parser.reformat_line(sample_line_spaces)).to eq(formatted_line)
+    end
+  end
+
+
   describe "#convert_line_to_hash" do
     it 'creates a Hash with data record assigned as values' do
       expect(parser.convert_line_to_hash(formatted_line)).to eq(formatted_hash)
