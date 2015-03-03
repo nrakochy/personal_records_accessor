@@ -1,9 +1,13 @@
 require 'json'
 
 module JSONRepository
-  class User
+  class Records
     def initialize(params)
       @db_file_path = params[:db_path]
+    end
+
+    def convert_records_to_json(data_records)
+      data_records.map{|record| JSON[record] }.to_json
     end
 
     def find_all_records
@@ -12,21 +16,26 @@ module JSONRepository
       all_records.map{|record| JSON.parse(record) }
     end
 
-    def convert_records_to_json(data_records)
-      data_records.map{|record| JSON[record] }.to_json
-    end
-
     def overwrite_data_records_file(data_records)
-      formatted_records = convert_records_to_json(data_records)
+      unpacked_records = unpack_personal_records(data_records)
+      formatted_records = convert_records_to_json(unpacked_records)
       File.open(@db_file_path, 'w'){ |file| file.write(formatted_records) }
     end
 
     def save(data_record)
       formatted_records = find_all_records
-      formatted_records << data_record
+      formatted_records << unpack_record(data_record)
       formatted_records = formatted_records.to_json
-      File.open(@db_file_path, 'w+'){ |file| file.puts(formatted_records) }
+      File.open(@db_file_path, 'w'){ |file| file.puts(formatted_records) }
       JSON.parse(formatted_records)
+    end
+
+    def unpack_personal_records(data_records)
+      data_records.map{|record| unpack_record(record)  }
+    end
+
+    def unpack_record(data_record)
+      data_record.read_record_attributes_without_reformatted_date_included
     end
   end
 end

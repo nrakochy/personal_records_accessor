@@ -1,4 +1,4 @@
-require_relative "json_repository"
+require "json_repository"
 
 class RepositoryInterface
 

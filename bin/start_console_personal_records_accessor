@@ -2,10 +2,10 @@
 
 $:.unshift(File.expand_path(File.dirname(__FILE__) + "/../lib/"))
 
-require 'command_line_runner'
+require 'api_mediator'
 
-database_path = { db_path: 'database.json' }
-CommandLineRunner.new(ARGV, database_path)
+params = { data_files: ARGV, db_path: 'database.json' }
+APIMediator.new(params).process_records_and_display_to_console
 
 
 

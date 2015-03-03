@@ -5,15 +5,15 @@ require 'json_repository'
 require 'personal_record'
 require 'query_requirements'
 
-class CommandLineRunner
+class APIMediator
 
-  def initialize(data_files, database_path)
+  def initialize(params)
+    @data_files = params[:data_files]
     @file_parser = IncomingRecordsParser.new
     @record_sorter = DataRecordSorter.new
-    @repo = JSONRepository::User.new(database_path)
+    @repo = JSONRepository::Records.new({db_path: params[:db_path]})
     @query_requirements = QueryRequirements.new({ record_sorter: @record_sorter })
     @console_presenter = ConsolePresenter.new
-    process_records_and_display_to_console(data_files)
   end
 
   def construct_personal_record(data_record)
@@ -32,8 +32,8 @@ class CommandLineRunner
     @file_parser.parse_files(data_files)
   end
 
-  def process_records_and_display_to_console(data_files)
-    records_information = parse_files(data_files)
+  def process_records_and_display_to_console
+    records_information = parse_files(@data_files)
     data_records = build_personal_records(records_information)
     save_records(data_records)
     sorted_records = sort_records(data_records)
