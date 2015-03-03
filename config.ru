@@ -1,5 +1,7 @@
-require_relative "lib/repository_interface"
-require_relative "lib/records_api"
+$:.unshift File.expand_path("../lib/", __FILE__)
+
+require "repository_interface"
+require "records_api"
 
 ENV['RACK_ENV'] == "test" ? path = { db_path: './support/test.json' } : path = { db_path: 'database.json' }
 

@@ -7,10 +7,10 @@ class PersonalRecord
     @gender = params[:gender]
     @favorite_color = params[:favorite_color]
     @date_of_birth = params[:date_of_birth]
-    @date_year_month_day = find_date_year_month_day
+    @date_year_month_day = find_date_year_month_day(@date_of_birth)
   end
 
-  def find_date_year_month_day(date = @date_of_birth)
+  def find_date_year_month_day(date)
     reversed_date = date.split('/').reverse
     reversed_date[0] + "/" + reversed_date[2] + "/" + reversed_date[1]
   end

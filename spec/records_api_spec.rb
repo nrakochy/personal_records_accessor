@@ -10,16 +10,16 @@ describe RecordsAPI do
 
   describe RecordsAPI do
     describe "GET /records" do
-      xit "returns all records in the DB" do
+      it "returns all records in the DB" do
         get "/records"
         expect(last_response.status).to eq(200)
-        expect(last_response.body).to eq()
       end
     end
     describe "GET /records/gender" do
-      xit "returns DB records sorted by gender" do
+      it "returns DB records sorted by gender" do
         get "/records/gender"
-        expect(last_response.body).to eq()
+        expect(last_response.status).to eq(200)
+        #expect(last_response.body).to eq()
       end
     end
   end

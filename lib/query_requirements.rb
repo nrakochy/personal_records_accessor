@@ -7,6 +7,10 @@ class QueryRequirements
     @sorted_results = []
   end
 
+  def assign_record_set(records)
+    @data_records = records
+  end
+
   def sort_by_query_requirements(personal_records = nil)
     @data_records ||= personal_records
     @sorted_results << sort_by_gender_then_last_name_ascending
