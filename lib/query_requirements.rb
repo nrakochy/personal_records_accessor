@@ -1,5 +1,3 @@
-require 'data_record_sorter'
-
 class QueryRequirements
   attr_reader :sorted_results, :sorter, :data_records
 
