@@ -31,9 +31,6 @@ GET /records/name - returns records sorted by name
 ```
 
 ## Tests
-Using Rspec to TDD. `Rspec spec/` or `rake` should give you green all the way. 
+Using Rspec to TDD. `Rspec spec/` or `bundle exec rake` should give you green all the way. 
 
-## To-Do
 
-* Assign id_number to records in DB
-* Create a Rakefile to run specs

@@ -6,5 +6,6 @@ gem 'puma', '~> 2.11.1'
 
 group :test do
   gem 'rspec', '~> 3.2.0'
+  gem 'rack-test', '~> 0.6.3'
 end
 
