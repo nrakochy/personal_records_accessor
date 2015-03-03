@@ -11,7 +11,7 @@ class APIMediator
     @data_files = params[:data_files]
     @file_parser = IncomingRecordsParser.new
     @record_sorter = DataRecordSorter.new
-    @repo = JSONRepository::Records.new({db_path: params[:db_path]})
+    @repo = RepositoryInterface.for(:records)
     @query_requirements = QueryRequirements.new({ record_sorter: @record_sorter })
     @console_presenter = ConsolePresenter.new
   end

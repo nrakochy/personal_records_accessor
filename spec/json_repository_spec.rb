@@ -18,17 +18,17 @@ describe JSONRepository::Records do
     @test_file = create_test_file
   end
 
-  describe "#find_all_records" do
-    it 'correctly retrieves file contents' do
-      expect(repo.find_all_records).to include(json1)
-      expect(repo.find_all_records).to include(json2)
-    end
-  end
-
   describe "#overwrite_data_records_file" do
     it 'overwrites a new file on the same db_path each time initialized' do
       new_file = repo.overwrite_data_records_file([record3, record4])
       expect(new_file == @test_file).to be false
+    end
+  end
+
+  describe "#find_all_records" do
+    it 'correctly retrieves file contents' do
+      expect(repo.find_all_records).to include(json1)
+      expect(repo.find_all_records).to include(json2)
     end
   end
 

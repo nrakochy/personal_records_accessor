@@ -30,6 +30,8 @@ module JSONRepository
       JSON.parse(formatted_records)
     end
 
+  private
+
     def unpack_personal_records(data_records)
       data_records.map{|record| unpack_record(record)  }
     end
