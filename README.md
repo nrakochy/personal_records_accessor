@@ -10,13 +10,6 @@ Output 1 – sorted by gender (females before males) then by last name ascending
 Output 2 – sorted by birth date, ascending.
 Output 3 – sorted by last name, descending.
 ```
-
-## Rackup
-This app uses Puma as for a server and is configured in the Procfile. I use `foreman start` for local
-refactoring, but it should work on a remote service like Heroku.
-
-Otherwise, `rackup` will work, but this will not use the concurrency awesome sauce of Puma.
-
 ## Api
 This app uses the [Grape Api](http://intridea.github.io/grape/), which is a “an opinionated micro-framework
 for creating REST-like APIs in Ruby.”
@@ -34,15 +27,15 @@ with these fields:
 ```
 last_name first_name gender favorite_color date_of_birth
 ```
-To make the POST request from the command line, use this format:
+To make the POST request from the command line, you need to specify content type as json.
+Use this format:
 
 ```
-curl 0.0.0.0:5000/records -d “record= lastName firstName gender red 01/01/01”
+curl -X POST 0:5000/records -d '{"record": "lastName firstName female red 01/01/2001"}' -H "Content-Type:application/json"
 ```
-
 
 
 ## Tests
-Using Rspec to TDD. `Rspec spec/` or `bundle exec rake` should give you green all the way. 
+Using Rspec to TDD. `Rspec spec` or `bundle exec rake` should give you green all the way.
 
 

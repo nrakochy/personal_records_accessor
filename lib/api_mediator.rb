@@ -19,10 +19,6 @@ class APIMediator
     @endpoint_presenter = EndpointPresenter.new
   end
 
-  def build_personal_records(data_records)
-    data_records.map{ |record| construct_personal_record(record) }
-  end
-
   def get_all_db_records
     all_records = find_all_records
     present_results_to_endpoint(all_records)
@@ -59,6 +55,10 @@ class APIMediator
   end
 
   private
+
+  def build_personal_records(data_records)
+    data_records.map{ |record| construct_personal_record(record) }
+  end
 
   def construct_personal_record(data_record)
     @record_constructor.create_personal_record(data_record)
