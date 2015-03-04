@@ -9,18 +9,22 @@ describe JSONRepository::Records do
   let(:record4){ PersonalRecord.new({last_name: "LastName4", first_name: "FirstName4", gender: "female", favorite_color: "yellow", date_of_birth: "03/04/1980"}) }
   let(:parsed_record1){ record1.read_record_attributes_without_reformatted_date_included }
   let(:parsed_record2){ record2.read_record_attributes_without_reformatted_date_included }
+  let(:parsed_record3){ record3.read_record_attributes_without_reformatted_date_included }
+  let(:parsed_record4){ record4.read_record_attributes_without_reformatted_date_included }
 
   let(:db_path){ "./support/test.json" }
   let(:repo){ JSONRepository::Records.new({ db_path: db_path }) }
 
-  before :each do
-    @test_file = create_test_file
-  end
-
   describe "#overwrite_data_records_file" do
-    it 'overwrites a new file on the same db_path each time initialized' do
-      new_file = repo.overwrite_data_records_file([record3, record4])
-      expect(new_file == @test_file).to be false
+    after :each do
+      reset_test_file
+    end
+
+    it 'overwrites and creates new file on the same db_path each time initialized' do
+      repo.overwrite_data_records_file([record3, record4])
+      parsed_new_records = repo.find_all_records
+      expect(parsed_new_records).to include(parsed_record3)
+      expect(parsed_new_records).to include(parsed_record4)
     end
   end
 
@@ -40,7 +44,7 @@ describe JSONRepository::Records do
   end
 end
 
-def create_test_file
+def reset_test_file
   test_data = [record1, record2]
   repo.overwrite_data_records_file(test_data)
 end
