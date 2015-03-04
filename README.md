@@ -1,6 +1,6 @@
 #Personal Records Accessor
-This is vanilla Ruby app + the Grape micro-framework to read in text files from the command line, save to a db, and
-expose Rest-like API endpoints when it is racked up.
+This is a vanilla Ruby app + the Grape micro-framework to 1) read in text files from the command line, 2) save to a db,
+3) and expose Rest-like API endpoints when it is racked up.
 
 ##Command Line
 To process text files from the command line, enter the executable method in the bin + text files. There are two text
