@@ -5,7 +5,6 @@ require 'incoming_records_parser'
 require 'personal_record'
 require 'query_requirements'
 require 'record_constructor'
-require 'repository_interface'
 
 class APIMediator
 
@@ -55,7 +54,8 @@ class APIMediator
     parsed_data = parse_post_request(data)
     record = construct_personal_record(parsed_data)
     saved_record = save_record(record)
-    present_results_to_endpoint([saved_record])
+    unpacked_record = read_record_data(saved_record)
+    present_results_to_endpoint(unpacked_record)
   end
 
   private
@@ -72,20 +72,24 @@ class APIMediator
     @repo.find_all_records
   end
 
-  def present_results_to_endpoint
-    @endpoint_presenter.format_http_response(formatted_results)
+  def present_results_to_endpoint(results)
+    @endpoint_presenter.format_http_response(results)
   end
 
   def parse_post_request(data)
-    @parser.parse_post_request
+    @parser.parse_post_request(data)
   end
 
   def parse_files(data_files)
     @parser.parse_files(data_files)
   end
 
+  def read_record_data(data_record)
+    data_record.read_record_attributes_without_reformatted_date_included
+  end
+
   def read_personal_records_data(data_records)
-    data_records.map{|record| record.read_record_attributes_without_reformatted_date_included }
+    data_records.map{|record| read_record_data(record) }
   end
 
   def save_record(data_record)

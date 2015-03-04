@@ -29,6 +29,18 @@ GET /records/gender - returns records sorted by gender
 GET /records/birthdate - returns records sorted by birthdate
 GET /records/name - returns records sorted by name
 ```
+This can post a single command-delimited, space-delimited, or pipe-delimited line to save to the db,
+with these fields:
+```
+last_name first_name gender favorite_color date_of_birth
+```
+To make the POST request from the command line, use this format:
+
+```
+curl 0.0.0.0:5000/records -d “record= lastName firstName gender red 01/01/01”
+```
+
+
 
 ## Tests
 Using Rspec to TDD. `Rspec spec/` or `bundle exec rake` should give you green all the way. 
